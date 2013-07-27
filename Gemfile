@@ -3,6 +3,12 @@ source 'https://rubygems.org'
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.0.0'
 
+# Use devise for user authentication
+gem 'devise', '3.0.0'
+
+# Use PaperClip for image processing
+gem 'paperclip', '~> 3.1'
+
 # Use sqlite3 as the database for Active Record
 gem 'sqlite3'
 
