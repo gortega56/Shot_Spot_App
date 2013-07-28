@@ -4,8 +4,10 @@
     <%= link_to "Add Photo", new_photo_path %>
 </div>
 
-<% @photos.each do |photo| %>
-  <h3> < %= photo.title %> </h3>
+
+  <% @photos.each do |photo| %>
+     <p> <%= link_to photo.title, photo_path(photo) %> </p>
+     <p> <%= image_tag photo.image.url(:small)%></p>
   <% end %>
 
 

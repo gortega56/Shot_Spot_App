@@ -1,3 +1,18 @@
 <h1> <%= @photo.title %> </h1>
 
 <%= image_tag @photo.image.url %>
+
+<div>
+    <h3> Comments </h3>
+    <ul>
+        <%= @photo.comments.each do |comment| %>
+            <li> <%= comment.body %> </li>
+        <% end %>
+    </ul>
+
+    <%= form_for [@photo, @comment] do |f| %>
+        <p> <%= f.text_area :body, placeholder: "Add a comment..." %> </p>
+        <%= f.submit %>
+    <% end %>
+
+  </div>

@@ -15,7 +15,10 @@ ShotSpotApp::Application.routes.draw do
   # Example resource route (maps HTTP verbs to controller actions automatically):
   #   resources :products
 
-  resources :photos
+  resources :photos do
+    resources :comments, only:  [:index, :new, :create]
+  end
+
   # Example resource route with options:
   #   resources :products do
   #     member do
