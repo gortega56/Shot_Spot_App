@@ -1,0 +1,11 @@
+<h1> All Photos </h1>
+
+<div>
+    <%= link_to "Add Photo", new_photo_path %>
+</div>
+
+<% @photos.each do |photo| %>
+  <h3> < %= photo.title %> </h3>
+  <% end %>
+
+
