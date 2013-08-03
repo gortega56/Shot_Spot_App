@@ -5,7 +5,7 @@
 <div>
     <h3> Comments </h3>
     <ul>
-        <%= @photo.comments.each do |comment| %>
+        <% @photo.comments.each do |comment| %>
             <li> <%= comment.body %> </li>
         <% end %>
     </ul>
