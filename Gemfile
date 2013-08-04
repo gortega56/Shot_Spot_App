@@ -9,6 +9,9 @@ gem 'devise', '3.0.0'
 # Use PaperClip for image processing
 gem 'paperclip', '~> 3.1'
 
+# Use exiftool from EXIF processing
+gem 'exiftool_vendored'
+
 # Use sqlite3 as the database for Active Record
 gem 'sqlite3'
 

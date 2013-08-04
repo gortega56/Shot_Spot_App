@@ -2,6 +2,19 @@
 
 <%= image_tag @photo.image.url %>
 
+<ul>
+    <li> <%= "Orientation: #{@photo.orientation}" %></li>
+    <li> <%= "Resolution: #{@photo.x_resolution}x#{@photo.y_resolution}" %></li>
+    <li> <%= "ISO: #{@photo.iso}" %></li>
+    <li> <%= "Flash: #{@photo.flash}" %></li>
+    <li> <%= "Shutter Speed: #{@photo.shutter_speed}" %></li>
+    <li> <%= "Aperture Value: #{@photo.aperture_value}" %></li>
+    <li> <%= "White Balance: #{@photo.white_balance}" %></li>
+    <li> <%= "Latitude: #{@photo.latitude}" %></li>
+    <li> <%= "Longitude: #{@photo.longitude}" %></li>
+    <li> <%= "Altitude: #{@photo.altitude}" %></li>
+</ul>
+
 <div>
     <h3> Comments </h3>
     <ul>

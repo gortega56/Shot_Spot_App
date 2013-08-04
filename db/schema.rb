@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20130727195836) do
+ActiveRecord::Schema.define(version: 20130804043134) do
 
   create_table "categories", force: true do |t|
     t.string   "name"
@@ -40,6 +40,27 @@ ActiveRecord::Schema.define(version: 20130727195836) do
     t.string   "image_content_type"
     t.integer  "image_file_size"
     t.datetime "image_updated_at"
+    t.string   "orientation"
+    t.integer  "x_resolution"
+    t.integer  "y_resolution"
+    t.string   "resolution_unit"
+    t.decimal  "shutter_speed"
+    t.float    "f_number"
+    t.integer  "iso"
+    t.datetime "date_time_original"
+    t.float    "aperture_value"
+    t.float    "brightness"
+    t.string   "flash"
+    t.string   "focal_length"
+    t.string   "color_space"
+    t.string   "exposure_mode"
+    t.string   "white_balance"
+    t.string   "capture_type"
+    t.string   "altitude"
+    t.string   "compression"
+    t.integer  "width"
+    t.integer  "height"
+    t.float    "light_value"
   end
 
   create_table "users", force: true do |t|
