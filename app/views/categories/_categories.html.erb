@@ -1,0 +1,14 @@
+<ul>
+        <% @categories.each do |category| %>
+            <li>
+                <%= link_to category.name, category_path(category) %>
+                <ul>
+                    <% category.photos do |photo| %>
+                        <li>
+                          <%= link_to image_tag(photo.image.url(:small)), photo_path(photo) %>
+                      </li>
+                    <% end %>
+                </ul>
+            </li>
+        <% end %>
+</ul>

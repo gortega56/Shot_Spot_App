@@ -46,4 +46,12 @@ class Photo < ActiveRecord::Base
           self.compression            = exif_hash[:compression]
           self.light_value                = exif_hash[:light_value]
       end
+
+      def self.search_by_title(title)
+          Photo.where("title LIKE :title OR description LIKE :title", title: "%#{title}%")
+      end
+
+      def self.search_by_address(address)
+          Photo.where("address LIKE :address OR description LIKE :address", address: "%#{address}%")
+      end
 end
