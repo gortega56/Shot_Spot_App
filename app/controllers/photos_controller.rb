@@ -1,11 +1,11 @@
 class PhotosController < ApplicationController
+before_action :load_photo, only: [:show, :edit, :update]
 
   def index
     @photos = Photo.all
   end
 
   def show
-    @photo = Photo.find(params[:id])
     @comment = @photo.comments.new
   end
 
@@ -19,7 +19,7 @@ class PhotosController < ApplicationController
     @photo.user = current_user
 
     if (@photo.save)
-      redirect_to @photo
+      redirect_to edit_photo_path(@photo)
     else
       render :new
     end
@@ -30,10 +30,18 @@ class PhotosController < ApplicationController
   end
 
   def update
-
+    if @photo.update_attributes(safe_params)
+          redirect_to @photo
+    else
+          render :edit
+    end
   end
 
 private
+  def load_photo
+      @photo = Photo.find(params[:id])
+  end
+
   def safe_params
     params.require(:photo).permit(:title, :description, :address, :image,:latitude, :longitude,
                                                           :orientation, :x_resolution, :y_resolution, :resolution_unit,

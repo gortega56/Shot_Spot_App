@@ -1,5 +1,5 @@
 class Photo < ActiveRecord::Base
-
+      #validates :shutter_speed, :aperture_value, :focal_length, numericality: true
       belongs_to :user
       has_many :comments
       has_and_belongs_to_many :categories
@@ -12,9 +12,21 @@ class Photo < ActiveRecord::Base
       validates_attachment_presence :image
       #validates_attachment_size :image, less_than: <size>
       #validates_attachment_content_type :image, content_type: []
+      geocoded_by :address
+      after_validation :geocode, :if => :address_changed?
+
 
       reverse_geocoded_by :latitude, :longitude, :address => :address
       after_validation :reverse_geocode
+
+      def self.search_by_title(title)
+          Photo.where("title LIKE :title OR description LIKE :title", title: "%#{title}%")
+      end
+
+      def self.search_by_address(address)
+          Photo.where("address LIKE :address OR description LIKE :address", address: "%#{address}%")
+      end
+
       private
 
       def read_exif
@@ -45,13 +57,5 @@ class Photo < ActiveRecord::Base
           self.height                       = exif_hash[:image_height]
           self.compression            = exif_hash[:compression]
           self.light_value                = exif_hash[:light_value]
-      end
-
-      def self.search_by_title(title)
-          Photo.where("title LIKE :title OR description LIKE :title", title: "%#{title}%")
-      end
-
-      def self.search_by_address(address)
-          Photo.where("address LIKE :address OR description LIKE :address", address: "%#{address}%")
       end
 end

@@ -1,3 +1,15 @@
+<h1> Upload Your Photo </h1>
 
 <%= render partial: "error" %>
-<%= render partial: 'form' %>
+
+<%= form_for @photo, :html => {:multipart => true} do |f|  %>
+    <p>
+        <%= f.file_field :image %>
+    </p>
+
+    <p>
+        <%= f.submit "Submit" %>
+    </p>
+
+<% end %>
+

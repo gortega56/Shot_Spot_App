@@ -15,7 +15,7 @@ ShotSpotApp::Application.routes.draw do
   # Example resource route (maps HTTP verbs to controller actions automatically):
   #   resources :products
   get '/search' => 'search#index'
-  resources :users
+  resources :users, only: [:show]
   resources :categories
   resources :photos do
     resources :comments, only:  [:index, :new, :create]

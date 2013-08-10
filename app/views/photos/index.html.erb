@@ -5,9 +5,6 @@
 </div>
 
 
-  <% @photos.each do |photo| %>
-     <p> <%= link_to photo.title, photo_path(photo) %> </p>
-     <p> <%= image_tag photo.image.url(:small)%></p>
-  <% end %>
+  <%= render partial: 'photos' %>
 
 
