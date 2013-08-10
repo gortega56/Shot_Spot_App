@@ -6,6 +6,8 @@ gem 'rails', '4.0.0'
 # Use devise for user authentication
 gem 'devise', '3.0.0'
 
+gem "geocoder"
+
 # Use PaperClip for image processing
 gem 'paperclip', '~> 3.1'
 

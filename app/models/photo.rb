@@ -13,6 +13,8 @@ class Photo < ActiveRecord::Base
       #validates_attachment_size :image, less_than: <size>
       #validates_attachment_content_type :image, content_type: []
 
+      reverse_geocoded_by :latitude, :longitude, :address => :address
+      after_validation :reverse_geocode
       private
 
       def read_exif
