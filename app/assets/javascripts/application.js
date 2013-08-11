@@ -14,3 +14,9 @@
 //= require jquery_ujs
 //= require turbolinks
 //= require_tree .
+
+$(function() {
+  $("#photo_category_tokens").tokenInput("/categories.json", {
+    crossDomain: false
+  });
+});

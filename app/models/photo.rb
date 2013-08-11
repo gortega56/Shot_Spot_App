@@ -1,5 +1,6 @@
 class Photo < ActiveRecord::Base
       #validates :shutter_speed, :aperture_value, :focal_length, numericality: true
+      attr_reader :category_tokens
       belongs_to :user
       has_many :comments
       has_and_belongs_to_many :categories
@@ -28,6 +29,10 @@ class Photo < ActiveRecord::Base
       end
 
       private
+
+      def category_tokens=(ids)
+          self.category_ids = ids.split(",")
+      end
 
       def read_exif
           image_path = image.queued_for_write[:original].path
