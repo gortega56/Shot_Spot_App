@@ -25,7 +25,8 @@ class Photo < ActiveRecord::Base
       end
 
       def self.search_by_address(address)
-          Photo.where("address LIKE :address OR description LIKE :address", address: "%#{address}%")
+        #Address string sent to geocoder
+          Photo.near(address, 20)
       end
 
       private
