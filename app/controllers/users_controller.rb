@@ -23,7 +23,7 @@ before_action :load_user, only: [:show, :edit, :update]
   end
 
   def safe_params
-    params.require(:user).permit (:name)
+    params.require(:user).permit(:name, :avatar)
   end
 
 end

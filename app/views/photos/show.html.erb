@@ -1,6 +1,27 @@
 <h1> <%= @photo.title %> </h1>
 
-<%= image_tag @photo.image.url %>
+<%= link_to "Edit", edit_photo_path(@photo) %>
+<div class="container-fluid">
+      <div class="row-fluid">
+        <div class="span3">
+          <div class="well sidebar-nav">
+            <ul class="nav nav-list">
+              <li class="nav-header">Sidebar</li>
+              <li><%= link_to "Link1", "/path1"  %></li>
+              <li><%= link_to "Link2", "/path2"  %></li>
+              <li><%= link_to "Link3", "/path3"  %></li>
+            </ul>
+          </div><!--/.well -->
+        </div><!--/span-->
+        <div class="span9">
+          <%= bootstrap_flash %>
+          <%= yield %>
+        </div>
+      </div><!--/row-->
+    </div> <!-- /container -->
+<%= image_tag @photo.image.url, size: "500x500" %>
+
+
 
 <h3> EXIF Info</h3>
 <div>

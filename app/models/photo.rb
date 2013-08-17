@@ -5,7 +5,9 @@ class Photo < ActiveRecord::Base
       has_many :comments
       has_and_belongs_to_many :categories
 
-      has_attached_file :image, styles: {small: "100x100>"},
+      has_attached_file :image, source_file_options:  {all: '-auto-orient'},
+                                                  convert_options: {all: '-auto-orient'},
+                                                  styles: {small: "100x100>"},
                                                   url: "/assets/photos/:id/:style/:basename.:extension",
                                                   path: ":rails_root/public/assets/photos/:id/:style/:basename.:extension"
 
@@ -20,20 +22,25 @@ class Photo < ActiveRecord::Base
       reverse_geocoded_by :latitude, :longitude, :address => :address
       after_validation :reverse_geocode
 
+      acts_as_gmappable :process_geocoding => false
+
+      def gmaps4rails_address
+            self.address
+      end
+
       def self.search_by_title(title)
           Photo.where("title LIKE :title OR description LIKE :title", title: "%#{title}%")
       end
 
       def self.search_by_address(address)
-        #Address string sent to geocoder
           Photo.near(address, 20)
       end
 
-      private
-
-      def category_tokens=(ids)
-          self.category_ids = ids.split(",")
+      def category_tokens=(tokens)
+          self.category_ids = Category.ids_from_tokens(tokens)
       end
+
+      private
 
       def read_exif
           image_path = image.queued_for_write[:original].path

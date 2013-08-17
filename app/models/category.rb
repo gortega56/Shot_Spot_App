@@ -5,4 +5,8 @@ class Category < ActiveRecord::Base
               Category.where("name LIKE :name", name: "%#{name}%")
           end
 
+        def self.ids_from_tokens(tokens)
+            tokens.gsub!(/<<<(.+?)>>>/) { create!(name: $1).id }
+            tokens.split(',')
+        end
 end

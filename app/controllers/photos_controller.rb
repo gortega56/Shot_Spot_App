@@ -1,5 +1,6 @@
 class PhotosController < ApplicationController
 before_action :load_photo, only: [:show, :edit, :update]
+before_action :authenticate_user!, only: [:new, :create]
 
   def index
     @photos = Photo.all
@@ -43,11 +44,11 @@ private
   end
 
   def safe_params
-    params.require(:photo).permit(:title, :description, :address, :image,:latitude, :longitude,
+    params.require(:photo).permit(:title, :description, :address, :image, :latitude, :longitude,
                                                           :orientation, :x_resolution, :y_resolution, :resolution_unit,
                                                           :shutter_speed, :f_number, :iso, :date_time_original, :aperture_value,
                                                           :brightness, :flash, :focal_length, :color_space, :exposure_mode,
                                                           :white_balance, :capture_type, :altitude, :compression, :width, :height,
-                                                          :light_value)
+                                                          :light_value, :category_tokens)
   end
 end

@@ -36,7 +36,7 @@
 
     <p>
         <%= f.label :category_tokens, "Categories" %>
-        <%= f.text_field :category_tokens %>
+        <%= f.text_field :category_tokens, input_html: {data: {load: @photo.categories}} %>
     </p>
 
     <p>

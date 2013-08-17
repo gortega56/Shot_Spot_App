@@ -12,11 +12,8 @@
 //
 //= require jquery
 //= require jquery_ujs
+//= require twitter/bootstrap
 //= require turbolinks
+// = require jquery.tokeninput
 //= require_tree .
 
-$(function() {
-  $("#photo_category_tokens").tokenInput("/categories.json", {
-    crossDomain: false
-  });
-});
