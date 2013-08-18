@@ -1,46 +1,48 @@
-<%= form_for @photo, :html => {:multipart => true} do |f|  %>
-    <p>
-        <%= f.label :title %>
-        <%= f.text_field :title %>
-    </p>
+<div class="container">
+    <%= form_for @photo, :html => {:multipart => true} do |f|  %>
+        <p>
+            <%= f.label :title %>
+            <%= f.text_field :title %>
+        </p>
 
-    <p>
-        <%= f.label :description %>
-        <%= f.text_field :description %>
-    </p>
+        <p>
+            <%= f.label :description %>
+            <%= f.text_field :description %>
+        </p>
 
-    <p>
-        <%= f.label :address %>
-        <%= f.text_field :address %>
-    </p>
+        <p>
+            <%= f.label :address %>
+            <%= f.text_field :address %>
+        </p>
 
-    <p>
-        <%= f.label :iso %>
-        <%= f.text_field :iso %>
-    </p>
+        <p>
+            <%= f.label :iso %>
+            <%= f.text_field :iso %>
+        </p>
 
-    <p>
-        <%= f.label :aperture %>
-        <%= f.text_field :aperture_value %>
-    </p>
+        <p>
+            <%= f.label :aperture %>
+            <%= f.text_field :aperture_value %>
+        </p>
 
-    <p>
-        <%= f.label :focal_length %>
-        <%= f.text_field :focal_length %>
-    </p>
+        <p>
+            <%= f.label :focal_length %>
+            <%= f.text_field :focal_length %>
+        </p>
 
-    <p>
-        <%= f.label :shutter_speed %>
-        <%= f.text_field :shutter_speed %>
-    </p>
+        <p>
+            <%= f.label :shutter_speed %>
+            <%= f.text_field :shutter_speed %>
+        </p>
 
-    <p>
-        <%= f.label :category_tokens, "Categories" %>
-        <%= f.text_field :category_tokens, input_html: {data: {load: @photo.categories}} %>
-    </p>
+        <p>
+            <%= f.label :category_tokens, "Categories" %>
+            <%= f.text_field :category_tokens, input_html: {data: {load: @photo.categories}} %>
+        </p>
 
-    <p>
-        <%= f.submit "Submit" %>
-    </p>
+        <p>
+            <%= f.submit "Submit" %>
+        </p>
 
-<% end %>
+    <% end %>
+</div>

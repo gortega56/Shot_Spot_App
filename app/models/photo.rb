@@ -7,7 +7,7 @@ class Photo < ActiveRecord::Base
 
       has_attached_file :image, source_file_options:  {all: '-auto-orient'},
                                                   convert_options: {all: '-auto-orient'},
-                                                  styles: {small: "100x100>"},
+                                                  styles: {small: "100x100>", medium: "250x200>", large: "1000x750>"},
                                                   url: "/assets/photos/:id/:style/:basename.:extension",
                                                   path: ":rails_root/public/assets/photos/:id/:style/:basename.:extension"
 

@@ -5,7 +5,7 @@ class SearchController < ApplicationController
         @photosByName = Photo.search_by_title(params[:query])
         @photosByAddress = Photo.search_by_address(params[:query])
         @json = @photosByAddress.to_gmaps4rails do |photo, marker|
-              marker.title "i am a test"
+              marker.title photo.title
               marker.picture({
                   :picture => photo.image.url(:small),
                   :width   => 32,

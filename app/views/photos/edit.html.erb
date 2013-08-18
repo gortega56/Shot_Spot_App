@@ -1,6 +1,9 @@
 <h1> This be yo' photo </h1>
 
-<%= image_tag @photo.image.url %>
+<div class="container">
+  <img class="img-polaroid" src=<%= @photo.image.url(:large) %> alt="">
+</div>
+
 
 <%= render partial: "error" %>
 <%= render partial: 'form' %>

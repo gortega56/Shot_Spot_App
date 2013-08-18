@@ -1,7 +1,34 @@
-<h1> <%= image_tag @user.avatar.url(:thumb) %><%= "#{@user.email}"%></h1>
-
-<p> <%= link_to "Edit", edit_user_path(@user) %> </p>
 
 
+<div class="container">
+  <div class="row-fluid">
+    <h1>
+      <% if @user.avatar? %>
+        <div class="span1 ">
+          <div class>
+            <img src=<%= @user.avatar.url(:thumb) %> class="img-circle">
+          </div>
+        </div>
+      <% end %>
+     <div class="span8">
+        <%= "#{@user.email}"%>
+     </div>
+     </h1>
+      <div class="span2">
+          <div class="well sidebar-nav">
+            <ul class="nav nav-list">
+              <% if current_user.id == @user.id %>
+                <li class="nav-header">Options</li>
+                <li><%= link_to "Edit Profile", edit_user_path(@user) %></li>
+              <% end %>
+            </ul>
+          </div><!--/.well -->
+        </div><!--/span-->
+        <div class="span9">
+          <%= bootstrap_flash %>
+          <%= yield %>
+        </div>
+  </div>
+</div>
 
 <%= render partial: "photos/photos" %>

@@ -1,3 +1,13 @@
-  <% @photos.each do |photo| %>
-      <%= link_to image_tag(photo.image.url(:small)), photo_path(photo) %>
-  <% end %>
+<div class="container">
+  <div class="row-fluid">
+    <ul class="thumbnails">
+      <% @photos.each do |photo| %>
+        <li class="span3">
+            <a href= <%= photo_path(photo) %>>
+            <img class="img-polaroid" src=<%= photo.image.url(:medium) %> alt="">
+            </a>
+         </li>
+      <% end %>
+    </ul>
+  </div>
+</div>

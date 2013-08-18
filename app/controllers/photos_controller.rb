@@ -1,5 +1,5 @@
 class PhotosController < ApplicationController
-before_action :load_photo, only: [:show, :edit, :update]
+before_action :load_photo, only: [:show, :edit, :update, :destroy]
 before_action :authenticate_user!, only: [:new, :create]
 
   def index
@@ -36,6 +36,12 @@ before_action :authenticate_user!, only: [:new, :create]
     else
           render :edit
     end
+  end
+
+  def destroy
+    @photo.image.destroy
+    @photo.destroy
+    redirect_to user_path(current_user), :flash => { :success => "Photo Removed." }
   end
 
 private

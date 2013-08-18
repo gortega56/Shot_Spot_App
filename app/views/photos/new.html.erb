@@ -2,14 +2,10 @@
 
 <%= render partial: "error" %>
 
-<%= form_for @photo, :html => {:multipart => true} do |f|  %>
-    <p>
-        <%= f.file_field :image %>
-    </p>
-
-    <p>
-        <%= f.submit "Submit" %>
-    </p>
-
-<% end %>
+<div class="container">
+  <%= form_for @photo, :html => {:multipart => true} do |f|  %>
+          <%= f.file_field :image %>
+          <%= f.submit "Submit" %>
+  <% end %>
+</div>
 
