@@ -6,7 +6,7 @@
       <% if @user.avatar? %>
         <div class="span1 ">
           <div class>
-            <img src=<%= @user.avatar.url(:thumb) %> class="img-circle">
+            <img src=<%= @user.avatar.url(:large_thumb) %> class="img-circle" >
           </div>
         </div>
       <% end %>

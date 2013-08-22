@@ -63,7 +63,7 @@
                 <% end %>
               </ul>
           <% end %>
-          <%= form_for [@photo, @comment] do |f| %>
+                    <%= form_for [@photo, @comment] do |f| %>
                     <%= f.text_area :body, placeholder: "Add a comment..." %>
                     <%= f.submit %>
                     <% end %>

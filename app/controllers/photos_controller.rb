@@ -49,6 +49,13 @@ private
       @photo = Photo.find(params[:id])
   end
 
+  def pre_populate_categories(categories)
+      json = categories.to_json(only: [:id, :name])
+      json.gsub('"id"', 'id').gsub('"name"', 'name').gsub('"','\'').html_safe
+  end
+
+  helper_method :pre_populate_categories
+
   def safe_params
     params.require(:photo).permit(:title, :description, :address, :image, :latitude, :longitude,
                                                           :orientation, :x_resolution, :y_resolution, :resolution_unit,

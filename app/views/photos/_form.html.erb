@@ -1,48 +1,49 @@
 <div class="container">
     <%= form_for @photo, :html => {:multipart => true} do |f|  %>
-        <p>
+        <div class="field">
             <%= f.label :title %>
             <%= f.text_field :title %>
-        </p>
+        </div>
 
-        <p>
+        <div class="field">
             <%= f.label :description %>
             <%= f.text_field :description %>
-        </p>
+        </div>
 
-        <p>
+        <div class="field">
             <%= f.label :address %>
             <%= f.text_field :address %>
-        </p>
+        </div>
 
-        <p>
+        <div class="field">
             <%= f.label :iso %>
             <%= f.text_field :iso %>
-        </p>
+        </div>
 
-        <p>
+        <div class="field">
             <%= f.label :aperture %>
             <%= f.text_field :aperture_value %>
-        </p>
+        </div>
 
-        <p>
+        <div class="field">
             <%= f.label :focal_length %>
             <%= f.text_field :focal_length %>
-        </p>
+        </div>
 
-        <p>
+        <div class="field">
             <%= f.label :shutter_speed %>
             <%= f.text_field :shutter_speed %>
-        </p>
+        </div>
 
-        <p>
+        <div class="field">
             <%= f.label :category_tokens, "Categories" %>
-            <%= f.text_field :category_tokens, input_html: {data: {load: @photo.categories}} %>
-        </p>
+            <% f.text_field :category_tokens,  data: {load: [{id: 1, name: "tech"}].to_json.gsub('"id"', 'id').html_safe}%>
+            <%= f.text_field :category_tokens,  data: {load: pre_populate_categories(@photo.categories)} %>
+        </div>
 
-        <p>
+        <div class="field">
             <%= f.submit "Submit" %>
-        </p>
+        </div>
 
     <% end %>
 </div>

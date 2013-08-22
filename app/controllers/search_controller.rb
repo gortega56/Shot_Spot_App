@@ -11,6 +11,7 @@ class SearchController < ApplicationController
                   :width   => 32,
                   :height  => 32
                  })
+              marker.json({link: photo_path(photo)})
         end
 
     end
